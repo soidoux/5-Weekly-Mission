@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <a href="index.html"><img src="logo.svg" alt="logo" width="210.583" height="38"></a>
+    <a href="index.html"><img src="imgfolder/logo.svg" alt="logo" width="210.583" height="38"></a>
     <div class="header-title">
       <span>회원이 아니신가요?</span><a class="sign" href="signup.html">회원 가입하기</a>
     </div>
@@ -17,14 +17,16 @@
     <form class="sign-form">
       <div class="sign-input-box">
         <label class="sign-label">이메일</label>
-        <input class="sign-input" placeholder="codeit@codeit.com">
+        <input id="email-input" class="sign-input" placeholder="codeit@codeit.com">
+        <p class="emailerrormessage"></p>
       </div>
       <div class="sign-input-box sign-password">
         <label class="sign-label">비밀번호</label>
         <div class="input-wrap">
-          <input class="sign-input" type="password">
-          <button class="eye-button" type="button"><img src="eye-off.svg" alt="eye-off" width="16" height="16"/></button>
+          <input id="password-input" class="sign-input" type="password">
+          <button class="eye-button" type="button"><img src="imgfolder/eye-off.svg" alt="eye-off" width="16" height="16"/></button>
         </div>
+        <p class="passworderrormessage"></p>
       </div>
       <button class="button" type="button">로그인</button>
     </form>
@@ -36,5 +38,6 @@
       </div>
     </div>
   </div>
+  <script src="index.js"></script>
 </body>
 </html>

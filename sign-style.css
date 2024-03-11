@@ -44,10 +44,6 @@ header {
   width: 400px;
 }
 
-.sign-password {
-  margin-top: 24px;
-}
-
 .sign-input-box {
   display: flex;
   flex-direction: column;
@@ -79,7 +75,6 @@ header {
 }
 
 .button {
-  margin-top: 30px;
   padding: 16px 20px;
   width: 400px;
   border-radius: 8px;
@@ -115,7 +110,7 @@ header {
   border-radius: 9999px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #FFFFFF;
-  background-image: url("google.png");
+  background-image: url("imgfolder/google.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -125,7 +120,7 @@ header {
   height: 42px;
   border-radius: 9999px;
   background-color: #F5E14B;
-  background-image: url("kakao.svg");
+  background-image: url("imgfolder/kakao.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -143,4 +138,14 @@ p {
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
+}
+
+.emailerrormessage, .passworderrormessage {
+  color: #FF5B56;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sign-input-error {
+  border: 1px solid #FF5B56;
 }
