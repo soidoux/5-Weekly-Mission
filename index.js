@@ -27,11 +27,13 @@ function removeInputError(inp, inpErr) {
 }
 
 
+
 function validateEmailInput(event) {
 
   const email = emailInput.value;
 
   if(email === "") {
+
     addInputError(emailInput, emailErrorMessage, "이메일을 입력해주세요.");
     return;
   }
@@ -41,7 +43,6 @@ function validateEmailInput(event) {
   }
 
   removeInputError(emailInput, emailErrorMessage);
-  
 }
 
 function validatePasswordInput(event) {
@@ -69,12 +70,9 @@ function confirmPasswordInput(event) {
   removeInputError(passwordConfirmInput, passwordConfirmErrorMessage);
 }
 
-
-
 emailInput.addEventListener('focusout', validateEmailInput);
 
 passwordInput.addEventListener('focusout', validatePasswordInput);
-
 
 
 function changeEyeButton(event) {
@@ -89,8 +87,6 @@ function changeEyeButton(event) {
 }
 
 passwordEyeButton.addEventListener('click', changeEyeButton);
-
-
 
 function loginUser() {
   const email = emailInput.value;
@@ -110,7 +106,3 @@ function loginUser() {
     return;
   }
 }
-
-
-
-
