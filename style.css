@@ -184,9 +184,25 @@ footer {
 
 .sns {
   display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
-
-
+.facebook {
+  display: inline-block;
+  vertical-align: top;
+}
+.twitter {
+  display: inline-block;
+  vertical-align: top;
+}
+.youtube {
+  display: inline-block;
+  vertical-align: top;
+}
+.instagram {
+  display: inline-block;
+  vertical-align: top;
+}
 
 @media ( max-width: 1199px) {
   .wrap {

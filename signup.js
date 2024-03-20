@@ -2,10 +2,11 @@ const emailInput = document.querySelector('#email-input');
 const emailErrorMessage = document.querySelector('.emailerrormessage');
 const passwordInput = document.querySelector('#password-input')
 const passwordErrorMessage = document.querySelector('.passworderrormessage');
-const loginButton = document.querySelector('.button');
-const passwordConfirmInput = document.querySelector('#passwordconfirm-input')
+const signButton = document.querySelector('.button');
+const passwordConfirmInput = document.querySelector('#password-confirm-input')
 const passwordConfirmErrorMessage = document.querySelector('.passwordconfirmerrormessage')
 const passwordEyeButton = document.querySelector('#password-eye-button');
+const passwordConfirmEyeButton = document.querySelector('#password-confirm-eye-button');
 
 
 function isEmailValid(email) {
@@ -27,13 +28,11 @@ function removeInputError(inp, inpErr) {
 }
 
 
-
 function validateEmailInput(event) {
 
   const email = emailInput.value;
 
   if(email === "") {
-
     addInputError(emailInput, emailErrorMessage, "이메일을 입력해주세요.");
     return;
   }
@@ -41,8 +40,13 @@ function validateEmailInput(event) {
     addInputError(emailInput, emailErrorMessage, "올바른 이메일 주소가 아닙니다.");
     return;
   }
+  if(email === "test@codeit.com") {
+    addInputError(emailInput, emailErrorMessage, "이미 사용중인 이메일입니다.");
+    return;
+  }
 
   removeInputError(emailInput, emailErrorMessage);
+  
 }
 
 function validatePasswordInput(event) {
@@ -51,6 +55,10 @@ function validatePasswordInput(event) {
 
   if(password === "") {
     addInputError(passwordInput, passwordErrorMessage, "비밀번호를 입력해주세요.");
+    return;
+  }
+  if(password.length<8 || (/[a-zA-Z]/.test(password) && /[0-9]/.test(password))===false) {
+    addInputError(passwordInput, passwordErrorMessage, "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.");
     return;
   }
 
@@ -70,12 +78,17 @@ function confirmPasswordInput(event) {
   removeInputError(passwordConfirmInput, passwordConfirmErrorMessage);
 }
 
+
+
 emailInput.addEventListener('focusout', validateEmailInput);
 
 passwordInput.addEventListener('focusout', validatePasswordInput);
 
+passwordConfirmInput.addEventListener('focusout', confirmPasswordInput);
 
-function changeEyeButton(event) {
+
+
+function changePasswordEyeButton(event) {
   if(passwordInput.type === 'password') {
     passwordInput.type = 'text';
     passwordEyeButton.querySelector('img').src = 'imgfolder/eye-on.svg';
@@ -86,23 +99,30 @@ function changeEyeButton(event) {
   }
 }
 
-passwordEyeButton.addEventListener('click', changeEyeButton);
+passwordEyeButton.addEventListener('click', changePasswordEyeButton);
 
-function loginUser() {
-  const email = emailInput.value;
-  const password = passwordInput.value;
 
-  const validEmail = "test@codeit.com";
-  const validPassword = "codeit101";
-
-  if (email === validEmail && password === validPassword) {
-    window.location.href = "folder.html";
-    return;
+function changePasswordConfirmEyeButton(event) {
+  if(passwordConfirmInput.type === 'password') {
+    passwordConfirmInput.type = 'text';
+    passwordConfirmEyeButton.querySelector('img').src = 'imgfolder/eye-on.svg';
   }
   else {
-    addInputError(emailInput, emailErrorMessage, "이메일을 확인해주세요.");
+    passwordConfirmInput.type = 'password';
+    passwordConfirmEyeButton.querySelector('img').src = 'imgfolder/eye-off.svg';
+  }
+}
 
-    addInputError(passwordInput, passwordErrorMessage, "비밀번호를 확인해주세요.");
+passwordConfirmEyeButton.addEventListener('click', changePasswordConfirmEyeButton);
+
+
+
+function signupUser() {
+  const inputErrorElement = document.querySelector('.sign-input-error');
+  if(inputErrorElement) {
+
     return;
   }
+
+  window.location.href = "folder.html";
 }
