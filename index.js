@@ -11,7 +11,6 @@ const passwordEyeButton = document.querySelector("#password-eye-button");
 
 function isEmailValid(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   return emailRegex.test(email);
 }
 
@@ -29,56 +28,37 @@ function removeInputError(inp, inpErr) {
 
 function validateEmailInput(event) {
   const email = emailInput.value;
-
   if (email === "") {
     addInputError(emailInput, emailErrorMessage, "이메일을 입력해주세요.");
     return;
   }
   if (!isEmailValid(email)) {
-    addInputError(
-      emailInput,
-      emailErrorMessage,
-      "올바른 이메일 주소가 아닙니다."
-    );
+    addInputError(emailInput, emailErrorMessage, "올바른 이메일 주소가 아닙니다.");
     return;
   }
-
   removeInputError(emailInput, emailErrorMessage);
 }
 
 function validatePasswordInput(event) {
   const password = passwordInput.value;
-
   if (password === "") {
-    addInputError(
-      passwordInput,
-      passwordErrorMessage,
-      "비밀번호를 입력해주세요."
-    );
+    addInputError(passwordInput, passwordErrorMessage, "비밀번호를 입력해주세요.");
     return;
   }
-
   removeInputError(passwordInput, passwordErrorMessage);
 }
 
 function confirmPasswordInput(event) {
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
-
   if (password !== passwordConfirm) {
-    addInputError(
-      passwordConfirmInput,
-      passwordConfirmErrorMessage,
-      "비밀번호가 일치하지 않아요."
-    );
+    addInputError(passwordConfirmInput, passwordConfirmErrorMessage, "비밀번호가 일치하지 않아요.");
     return;
   }
-
   removeInputError(passwordConfirmInput, passwordConfirmErrorMessage);
 }
 
 emailInput.addEventListener("focusout", validateEmailInput);
-
 passwordInput.addEventListener("focusout", validatePasswordInput);
 
 function changeEyeButton(event) {
@@ -105,12 +85,7 @@ function loginUser() {
     return;
   } else {
     addInputError(emailInput, emailErrorMessage, "이메일을 확인해주세요.");
-
-    addInputError(
-      passwordInput,
-      passwordErrorMessage,
-      "비밀번호를 확인해주세요."
-    );
+    addInputError(passwordInput, passwordErrorMessage, "비밀번호를 확인해주세요.");
     return;
   }
 }
@@ -128,15 +103,9 @@ async function submitForm(event) {
         password: passwordInput.value,
       }),
     });
-    //아이디와 비밀번호를 요청해서 응답을 받는 법 모르겠어요
+    // Additional logic to handle the response goes here
   } catch {
-    setInputError(
-      { input: emailInput, errorMessage: emailErrorMessage },
-      "이메일을 확인해주세요."
-    );
-    setInputError(
-      { input: passwordInput, errorMessage: passwordErrorMessage },
-      "비밀번호를 확인해주세요."
-    );
+    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
+    setInputError({ input: passwordInput, errorMessage: passwordErrorMessage }, "비밀번호를 확인해주세요.");
   }
 }
